@@ -16,6 +16,7 @@ public:
 		FEMALE
 	}; 
 private:
+	static unsigned long mPrsCnt; // Person Counter
 	unsigned long mId;
 	std::string mFname;     //first name 
 	std::string mSname;     // second name

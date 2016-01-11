@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Person.h"
 
+unsigned long Person::mPrsCnt = 0;
+
 Person::Person( std::string fname, std::string sname, 
 				Person* father, Person* mather,
 				Person::Sex sex )
@@ -17,7 +19,8 @@ Person::Person( std::string fname, std::string sname,
 
 	if( mMather != NULL )
 		mMather->mKids.push_back(this);
-
+	mId = mPrsCnt;
+	mPrsCnt++;
 }
 
 Person::~Person()
@@ -69,7 +72,7 @@ std::string Person::getStrSex() const
 
 void Person::printInfo() const
 {
-	std::cout << mFname+" "+mSname+ "("+getStrSex()+")" <<  std::endl;
+	std::cout << mFname+" "+mSname+ "("+getStrSex()+")" << "["<<mId<<"]" << std::endl;
 
 	if( mFather != NULL )	
 		std::cout << "	Father: " << mFather->getFname() << std::endl;	
