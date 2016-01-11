@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#ifndef SRC_PERSON_H_
+#define SRC_PERSON_H_
 
 class Person;
 
@@ -27,7 +29,7 @@ private:
 	std::vector<Person*> mSpouses;
 
 	Person( Person& person) {}    // forbid copy constructor
-	Person& operator=( Person& person){} // forbid assign operator
+	Person& operator=( Person& person){ return person; } // forbid assign operator
 public:
 	Person( std::string fname,
             std::string sname="",
@@ -48,3 +50,4 @@ public:
 	void addSpouse( Person* person );
 }; 
 
+#endif /* SRC_PERSON_H_ */
