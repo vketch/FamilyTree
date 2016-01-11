@@ -19,8 +19,8 @@ public:
 	virtual ~FamilyTree();
 	std::vector<Person*> mPrs;   //Family tree persons
 
-	/*Returns pointer to person by person id*/
-	Person *getPrsById( unsigned long *id) const;
+	/*Returns pointer to Person by the Person id*/
+	Person *getPrsById( unsigned long id) const;
 };
 
 #endif /* SRC_FAMILYTREE_H_ */
