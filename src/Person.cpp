@@ -18,7 +18,7 @@ Person::Person( std::string fname, std::string sname,
 
 	if( mMather != NULL )
 		mMather->mKids.push_back(this);
-	mId = mPrsCnt;
+	mID = mPrsCnt;
 	mPrsCnt++;
 }
 
@@ -45,6 +45,10 @@ Person::Sex Person::getSex() const {
 	return mSex;
 }
 
+unsigned long Person::getID() const {
+	return mID;
+}
+
 std::string Person::getStrSex() const {
 	switch( mSex ){
 		case Person::UNKNOWN:
@@ -63,7 +67,7 @@ std::string Person::getStrSex() const {
 }
 
 void Person::printInfo() const {
-	std::cout << mFname+" "+mSname+ "("+getStrSex()+")" << "["<<mId<<"]" << std::endl;
+	std::cout << mFname+" "+mSname+ "("+getStrSex()+")" << "["<<mID<<"]" << std::endl;
 
 	if( mFather != NULL )	
 		std::cout << "	Father: " << mFather->getFname() << std::endl;	

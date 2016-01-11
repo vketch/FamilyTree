@@ -19,7 +19,7 @@ public:
 	}; 
 private:
 	static unsigned long mPrsCnt; // Person Counter
-	unsigned long mId;
+	unsigned long mID;
 	std::string mFname;     //first name 
 	std::string mSname;     // second name
 	Person *mFather;
@@ -46,7 +46,8 @@ public:
 	const std::vector<Person*>& getSpouses() const;
 	void printInfo() const; 
 	std::string getStrSex() const;
-	Person::Sex getSex() const;	
+	Person::Sex getSex() const;
+	unsigned long getID() const;
 	void addSpouse( Person* person );
 }; 
 
