@@ -1,17 +1,33 @@
-PROJECT = TestPerson
-MODULES = Person
 
-.PHONY: all build clean
+LIB_NAME = FamilyTree
+
+LIB_MODULES = Person \
+          FamilyTree 
+
+LIB_OBJECTS = $(addsuffix .o, $(LIB_MODULES))
+TEST_MODULES = $(addsuffix _test, $(LIB_MODULES))
+TEST_OBJECTS = $(addsuffix .o, $(TEST_MODULES))
+TESTS = $(addprefix ./, $(TEST_MODULES))
+
+.PHONY: all build clean tests
+
+build: $(LIB_NAME).a
+
+$(LIB_NAME).a: $(LIB_OBJECTS)
 
 all: clean build tests
 
-build:
-	g++ -o $(PROJECT) $(PROJECT).cpp $(MODULES).cpp 
+tests: $(TESTS) 
 
-tests:
-	./$(PROJECT)
+run_tests:
+	$(TESTS)
 	
+$(TESTS): $(LIB_OBJECTS) $(TEST_OBJECTS)
+	g++ -o $@ $^
+		
 clean:
 	rm -f *.o
-	rm -f $(PROJECT) 
+	rm -f $(TESTS)
+	
+%.o: %.c %.h 
 
