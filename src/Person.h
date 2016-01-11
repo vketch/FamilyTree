@@ -8,7 +8,7 @@
 
 class Person;
 
-class Person{
+class Person {
 public:
 	enum Sex{
 		UNKNOWN = 1,

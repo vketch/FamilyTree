@@ -7,8 +7,7 @@ unsigned long Person::mPrsCnt = 0;
 
 Person::Person( std::string fname, std::string sname, 
 				Person* father, Person* mather,
-				Person::Sex sex )
-{
+				Person::Sex sex ) {
 	mFname = fname;
 	mSname = sname;
 	mSex = sex;
@@ -23,37 +22,30 @@ Person::Person( std::string fname, std::string sname,
 	mPrsCnt++;
 }
 
-Person::~Person()
-{	
+Person::~Person() {
 }
 
-std::string Person::getFname() const
-{
+std::string Person::getFname() const {
 	return mFname;
 }
 
-std::string Person::getSname() const
-{
+std::string Person::getSname() const {
 	return mSname;
 }
 
-const std::vector<Person*>& Person::getKids() const
-{
+const std::vector<Person*>& Person::getKids() const {
 	return mKids;
 }
 
-const std::vector<Person*>& Person::getSpouses() const
-{
+const std::vector<Person*>& Person::getSpouses() const {
 	return mSpouses;
 }
 
-Person::Sex Person::getSex() const
-{
+Person::Sex Person::getSex() const {
 	return mSex;
 }
 
-std::string Person::getStrSex() const
-{
+std::string Person::getStrSex() const {
 	switch( mSex ){
 		case Person::UNKNOWN:
 			return "UNKNOWN";
@@ -70,8 +62,7 @@ std::string Person::getStrSex() const
 	}
 }
 
-void Person::printInfo() const
-{
+void Person::printInfo() const {
 	std::cout << mFname+" "+mSname+ "("+getStrSex()+")" << "["<<mId<<"]" << std::endl;
 
 	if( mFather != NULL )	
@@ -80,16 +71,14 @@ void Person::printInfo() const
 	if( mMather != NULL )	
 		std::cout << "	Mather: " << mMather->getFname() << std::endl;	
 
-	if( !mSpouses.empty() )
-	{
+	if( !mSpouses.empty() ) {
 		std::cout << "	Spouses: ";
 		for( std::vector<Person*>::const_iterator it=mSpouses.begin(); it < mSpouses.end(); ++it )		
           	std::cout << (*it)->mFname << ',';		
 		std::cout << std::endl;
 	}
 
-	if( !mKids.empty() )
-	{
+	if( !mKids.empty() ) {
 		std::cout << "	Kids: ";
 		for( std::vector<Person*>::const_iterator it=mKids.begin(); it < mKids.end(); ++it )		
           	std::cout << (*it)->mFname << ',';		
@@ -97,8 +86,7 @@ void Person::printInfo() const
 	}
 } 
 
-void Person::addSpouse( Person* person )
-{
+void Person::addSpouse( Person* person ) {
 	mSpouses.push_back( person );
 	person->mSpouses.push_back( this );
 }
