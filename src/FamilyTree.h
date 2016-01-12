@@ -10,17 +10,23 @@
 
 #ifndef SRC_FAMILYTREE_H_
 #define SRC_FAMILYTREE_H_
+namespace FamilyTree{
+	class FamilyTree {
+	private:
+		FamilyTree(FamilyTree &obj){}
+		FamilyTree& operator=(FamilyTree &obj){ return obj; }
 
-class FamilyTree {
-	FamilyTree(FamilyTree &obj){}
-	FamilyTree& operator=(FamilyTree &obj){ return obj; }
-public:
-	FamilyTree();
-	virtual ~FamilyTree();
-	std::vector<Person*> mPrs;   //Family tree persons
+		std::vector<Person *> mPrs;   //Family tree persons
+	public:
+		FamilyTree();
+		virtual ~FamilyTree();
 
-	/*Returns pointer to Person by the Person id*/
-	Person *getPrsById( unsigned long id) const;
-};
+	//	/*Add Person to family tree*/
+	//	Person* AddPrs( Person *person);
+
+		/*Returns pointer to Person by the Person id*/
+		Person* getPrsById( unsigned long id) const;
+	};
+} // FamilyTree
 
 #endif /* SRC_FAMILYTREE_H_ */

@@ -2,6 +2,7 @@
 #include "Person.h"
 
 using namespace std;
+using namespace FamilyTree;
 
 int main(){
 	vector<Person *> BblPrs;   // Bible Persons
