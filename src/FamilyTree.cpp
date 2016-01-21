@@ -16,10 +16,10 @@ namespace FamilyTree{
 		mPrs.clear();
 	}
 
-	//void FamilyTree::AddPrs( Person *person){
-	//	if( person != NULL )
-	//		mPrs.push_back(person);
-	//}
+	void FamilyTree::AddPrs( Person *person){
+		if( person != NULL )
+			mPrs.push_back(person);
+	}
 
 	Person* FamilyTree::getPrsById( unsigned long id) const{
 

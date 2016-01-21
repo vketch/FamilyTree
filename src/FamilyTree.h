@@ -21,8 +21,8 @@ namespace FamilyTree{
 		FamilyTree();
 		virtual ~FamilyTree();
 
-	//	/*Add Person to family tree*/
-	//	Person* AddPrs( Person *person);
+		/*Add Person to family tree*/
+		void AddPrs( Person *person);
 
 		/*Returns pointer to Person by the Person id*/
 		Person* getPrsById( unsigned long id) const;
