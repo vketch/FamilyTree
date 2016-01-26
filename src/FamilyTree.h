@@ -11,6 +11,7 @@
 #ifndef SRC_FAMILYTREE_H_
 #define SRC_FAMILYTREE_H_
 namespace FamilyTree{
+
 	class FamilyTree {
 	private:
 		FamilyTree(FamilyTree &obj){}
@@ -27,6 +28,7 @@ namespace FamilyTree{
 		/*Returns pointer to Person by the Person id*/
 		Person* getPrsById( unsigned long id) const;
 	};
+
 } // FamilyTree
 
 #endif /* SRC_FAMILYTREE_H_ */
