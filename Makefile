@@ -8,7 +8,9 @@ LIB_NAME = FamilyTree
 LIB = $(LIB_DIR)/$(LIB_NAME).a 
 
 LIB_MODULES = Person \
-          FamilyTree 
+          FamilyTree \
+          HumanityTree
+           
 LIB_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIB_MODULES) ))
 
 TEST_MODULES = $(addsuffix _test, $(LIB_MODULES))
@@ -24,7 +26,7 @@ $(LIB): $(LIB_OBJECTS)
 
 all: clean build tests
 
-tests: $(TESTS) 
+tests: $(TESTS)  
 
 run_tests:
 	$(TESTS)
