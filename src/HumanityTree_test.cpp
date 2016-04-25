@@ -7,6 +7,8 @@
 
 #include "HumanityTree.h"
 
-namespace FamilyTree {
 
-} /* namespace FamilyTree */
+int main(){
+
+}
+

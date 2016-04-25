@@ -3,8 +3,11 @@ SRC_DIR = src
 LIB_DIR = lib
 OBJ_DIR = obj
 BIN_DIR = bin
+TEST_DIR = test
 
-LIB_NAME = FamilyTree
+dir_guard=@mkdir -p $(@D)
+
+LIB_NAME = family_tree
 LIB = $(LIB_DIR)/$(LIB_NAME).a 
 
 LIB_MODULES = Person \
@@ -13,33 +16,38 @@ LIB_MODULES = Person \
            
 LIB_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIB_MODULES) ))
 
-TEST_MODULES = $(addsuffix _test, $(LIB_MODULES))
+#TEST_SUFIX =_test
+#TEST_MODULES = $(addsuffix $(TEST_SUFIX), $(LIB_MODULES))
 #TEST_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(TEST_MODULES)))
 #TESTS = $(addprefix $(BIN_DIR)/, $(TEST_MODULES))
 
-.PHONY: all build clean init tests
+.PHONY: all build clean test
 
-build: $(LIB)
+build: $(LIB) 
 	
 $(LIB): $(LIB_OBJECTS)
-	ar rcs $@ $<
+	$(dir_guard)
+	ar rcs $@ $^
 	
-$(TESTS): $(LIB_OBJECTS) $(TEST_OBJECTS)
-	g++ -o $@ $^
+$(TESTS): $(LIB) $(TEST_OBJECTS)  
 
-all: clean build tests 
-
-run_tests: $(TESTS) 
-	$(TESTS)
+all: clean build test
 		
 clean:
 	rm -f $(LIB_OBJECTS) 
 	rm -f $(TEST_OBJECTS)
-	rm -f $(TESTS)
-		
-obj/%.o: src/%.cpp
+#	rm -f $(TESTS)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(dir_guard)
 	g++ -c -o $@ $^  
-	
+
+$(BIN_DIR)/%: $(OBJ_DIR)/%.o 
+	$(dir_guard)
+	g++ -o $@ $< $(LIB) 
+				
+#run_tests: $(TESTS) 
+#	$(TESTS)
 	
 # setup environment  	
 setup: gtest
@@ -50,7 +58,7 @@ GTESTS_ROOT = ./googletest
 
 #include tunned gtest make  file
 include gmakefile.mk
-
+	
 # Google test repository  	
 GT_REPO  = https://github.com/google/googletest.git
 
