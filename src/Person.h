@@ -45,9 +45,9 @@ private:
   std::vector<Person*> mSpouses;
 
   // forbid copy constructor
-  Person(Person& person) {}
+  Person(Person& person);
   // forbid assign operator
-  Person& operator=(Person& person) {}
+  Person& operator=(Person& person);
 
 };
 

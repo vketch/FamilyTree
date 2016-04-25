@@ -1,5 +1,5 @@
 /*
- * FamilyTree_test.cpp
+ * FamilyTree_sample.cpp
  *
  *  Created on: Jan 11, 2016
  *      Author: vsadivskyy
