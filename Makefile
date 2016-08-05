@@ -16,9 +16,11 @@ LIB_MODULES = Person \
            
 LIB_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIB_MODULES) ))
 
-.PHONY: all build clean test
+.PHONY: all build clean tests
 
-build: $(LIB) 
+build: $(LIB)
+
+all: clean build 
 	
 $(LIB): $(LIB_OBJECTS)
 	$(dir_guard)
@@ -37,10 +39,10 @@ clean:
 	rm -f ./$(LIB_DIR)/*.a	 
 	rm -f ./$(BIN_DIR)/*
 	rm -f  gtest.a gtest_main.a *.o	
-#	rm -f $(TESTS)
 
-all: clean build test
 
+
+#  !! Build and run google test !!!  
 TEST_SUFIX =_test
 #TEST_MODULES = $(addsuffix $(TEST_SUFIX), $(LIB_MODULES))
 TEST_MODULES = Person_test                              
@@ -48,10 +50,11 @@ TEST_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(TEST_MODULES)))
 UNIT_TESTS = $(addprefix $(TEST_DIR)/, $(addsuffix $(TEST_SUFIX), $(LIB_NAME)))
 
 tests: $(UNIT_TESTS)
-	@echo $(UNIT_TESTS) 
+	@echo $(UNIT_TESTS)
+	$(UNIT_TESTS) 
 
 $(UNIT_TESTS) : $(LIB_OBJECTS) $(TEST_OBJECTS) gtest.a gtest_main.a
-	g++ -o $@ $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ 
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
@@ -109,32 +112,9 @@ $(OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Google Unit Tests ######
- 				
-#run_tests: $(TESTS) 
-#	$(TESTS)
-
-#$(TESTS): $(LIB) $(TEST_OBJECTS)
 	
-## setup environment  	
+## !!! Setup environment !!!!
+  	
 #setup: gtest
 #	  		
 ### Google test #####

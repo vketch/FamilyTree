@@ -14,24 +14,68 @@ class Person;
 
 class Person {
 public:
-  enum Sex {
-    UNKNOWN = 1, MALE, FEMALE
-  };
-  Person(std::string fname, std::string sname = "", Person* father = NULL,
-      Person* mather = NULL, Person::Sex sex = Person::UNKNOWN);
+	enum Sex {
+		UNKNOWN = 1, MALE, FEMALE
+	};
 
-  virtual ~Person();
+	Person(std::string fname, std::string sname = "", Person* father = NULL,
+	  Person* mather = NULL, Person::Sex sex = Person::UNKNOWN)
+	{
+	  mFname = fname;
+	  mSname = sname;
+	  mSex = sex;
+	  mFather = father;
+	  mMather = mather;
+	  if (mFather != NULL)
+	    mFather->mKids.push_back(this);
 
-  std::string getFname() const;
-  std::string getSname() const;
-  std::string getStrSex() const;
-  Person::Sex getSex() const;
-  unsigned long getID() const;
-  const std::vector<Person*>& getKids() const;
-  void printInfo() const;
+	  if (mMather != NULL)
+	    mMather->mKids.push_back(this);
 
-  void addSpouse(Person* person);
-  const std::vector<Person*>& getSpouses() const;
+	  mID = Person::mPrsCnt;
+	  Person::mPrsCnt++;
+	}
+
+	virtual ~Person() {};
+
+	const std::string& getFname() const {
+		return mFname;
+	}
+
+	const std::string& getSname() const {
+		return mSname;
+	}
+
+	const Person* getFather() const {
+		return mFather;
+	}
+	const Person* getMather() const {
+		return mMather;
+	}
+
+	Sex getSex() const {
+		return mSex;
+	}
+	std::string getStrSex() const;
+
+	const std::vector<Person*>& getKids() const {
+	  return mKids;
+	}
+
+	const std::vector<Person*>& getSpouses() const {
+	  return mSpouses;
+	}
+
+	void addSpouse(Person* person) {
+	  mSpouses.push_back(person);
+	  person->mSpouses.push_back(this);
+	}
+
+	unsigned long getID() const {
+		return mID;
+	}
+
+	void printInfo() const;
 
 private:
   static unsigned long mPrsCnt; // Person Counter

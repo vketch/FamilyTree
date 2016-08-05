@@ -30,7 +30,7 @@
 # Eclipse project
 *.cproject
 *.project
+*.settings
  
-
 
 /googletest/
