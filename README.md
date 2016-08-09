@@ -3,7 +3,7 @@ Solution for the organizing a family tree.
 The main  goal is to provide a possibility to build a whole family tree of the Bible persons.
 
 ## Compiling
-To compile  library clone source codes into PATH   
+Clone source codes into PATH
 
 ```bash
 git clone https://github.com/vketch/
@@ -17,5 +17,5 @@ and simply compile it
 make 
 ```
 
-The family_tree.a library you can fin in the  $PATH/lib directory.
+The family_tree.a library will be located in the  $PATH/lib/
 
