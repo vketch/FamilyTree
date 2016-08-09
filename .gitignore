@@ -24,6 +24,13 @@
 *.out
 *.app
 
-# Temporary files
+# Temporary VIM 
 *.swp
 
+# Eclipse project
+*.cproject
+*.project
+*.settings
+ 
+
+/googletest/
