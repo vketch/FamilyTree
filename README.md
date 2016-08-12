@@ -21,7 +21,7 @@ The family_tree.a library will be located in the  $PATH/lib/
 
 ## Unit tests
 To run unit tests 
-```make tests 
+```bash 
 make 
 ```
 It will perform following:
