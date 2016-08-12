@@ -17,6 +17,17 @@ and simply compile it
 ```bash
 make 
 ```
-
 The family_tree.a library will be located in the  $PATH/lib/
+
+## Unit tests
+To run unit tests 
+```make tests 
+make 
+```
+It will perform following:
+    * clone google tests into  $PATH directory
+    * build google tests library 
+    * build unit tests and run them
+    
+For the second time the only building unit tests and run them will be perform     
 
