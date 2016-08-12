@@ -15,7 +15,7 @@ LIB_MODULES = Person \
            
 LIB_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIB_MODULES) ))
 
-.PHONY: all build clean tests
+.PHONY: all build clean
 
 build: $(LIB)
 
@@ -36,8 +36,7 @@ $(BIN_DIR)/%: $(OBJ_DIR)/%.o
 clean:
 	rm -f ./$(OBJ_DIR)/*.o
 	rm -f ./$(LIB_DIR)/*.a	 
-	rm -f ./$(BIN_DIR)/*
-	rm -f  gtest.a gtest_main.a *.o	
+	rm -f ./$(BIN_DIR)/*		
 
 
 #  !!!Unit tests part!!!  
@@ -48,11 +47,17 @@ UNIT_TESTS = $(addprefix $(TEST_DIR)/, $(addsuffix $(TEST_SUFIX), $(LIB_NAME)))
 # Flags passed to the C++ compiler to compile gtests
 CXXFLAGS += -g -Wall -Wextra -pthread
 
-tests: gtests $(UNIT_TESTS)
-	$(UNIT_TESTS)
+.PHONY: tests utest_build_print
 
-$(UNIT_TESTS) : $(LIB_OBJECTS) $(TEST_OBJECTS) 
+tests:  gtests utest_build_print $(UNIT_TESTS)
+	@echo -----------Run Unit Tests-------------
+	$(UNIT_TESTS)
+	
+$(UNIT_TESTS): $(LIB_OBJECTS) $(TEST_OBJECTS) 
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(GTEST_LIB) -lpthread
+
+utest_build_print:
+	@echo --------Build Unit Tests-----------
 
 $(OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp
 	$(dir_guard)

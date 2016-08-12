@@ -4,14 +4,14 @@ The main  goal is to provide a possibility to build a whole family tree of the B
 
 ## Building
 On Linux: 
-Clone source codes into PATH
+Clone project
 
 ```bash
-git clone https://github.com/vketch/
+git clone https://github.com/vketch/FamilyTree.git
 ```
 change the directory 
 ```bash
-cd $PATH/FamilyTree 
+cd FamilyTree 
 ```
 and simply compile it
 ```bash
@@ -25,7 +25,7 @@ To run unit tests
 make tests
 ```
 It will perform following:
-* clone google tests into  $PATH directory
+* clone google tests into project root directory
 * build google tests library 
 * build unit tests and run them
     
