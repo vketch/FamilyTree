@@ -12,7 +12,7 @@ LIB = $(LIB_DIR)/$(LIB_NAME).a
 LIB_MODULES = Person \
           FamilyTree \
           HumanityTree
-           
+                     
 LIB_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(LIB_MODULES) ))
 
 .PHONY: all build clean
@@ -27,7 +27,7 @@ $(LIB): $(LIB_OBJECTS)
 	  		
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(dir_guard)
-	g++ -c -o $@ $^  
+	g++ -std=c++11 -c -o $@ $^  
 
 $(BIN_DIR)/%: $(OBJ_DIR)/%.o 
 	$(dir_guard)
@@ -41,11 +41,11 @@ clean:
 
 #  !!!Unit tests part!!!  
 TEST_SUFIX =_test
-TEST_MODULES = Person_test                             
+TEST_MODULES = Person_test                            
 TEST_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(TEST_MODULES)))
 UNIT_TESTS = $(addprefix $(TEST_DIR)/, $(addsuffix $(TEST_SUFIX), $(LIB_NAME)))
 # Flags passed to the C++ compiler to compile gtests
-CXXFLAGS += -g -Wall -Wextra -pthread
+CXXFLAGS += -g -Wall -Wextra -pthread -std=c++11
 
 .PHONY: tests utest_build_print
 
