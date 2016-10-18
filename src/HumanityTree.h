@@ -14,20 +14,37 @@ namespace family_tree {
 
 class HumanityTree {
 public:
-  virtual ~HumanityTree();
-  HumanityTree* getInstanse();
+    static HumanityTree* getInstanse() {
+        if (mHumTree == NULL)
+            mHumTree = new HumanityTree();
+        return mHumTree;
+    }
+    virtual ~HumanityTree() {
+        // TODO Auto-generated destructor stub
+    }
 
-  /*Add Person to family tree*/
-  Person* AddPrs(std::string fname, std::string sname = "", Person* father =
-  NULL, Person* mather = NULL, Person::Sex sex = Person::UNKNOWN);
+    /*Add Person to Humanity tree*/
+    void AddPrs(Person& person) {
+        mPrs.push_back(&person);
+    }
 
-  /*Returns pointer to Person by the Person id*/
-  Person* getPrsById(unsigned long id) const;
+    /*Returns pointer to Person by the Person id*/
+    Person* getPrsById(unsigned long id) const {
+        if (!mPrs.empty()) {
+            for (Person *person : mPrs)
+                if (person->getID() == id)
+                    return person;
+            return NULL;
+        } else
+            return NULL;
+    }
 
 private:
-  HumanityTree();
-  HumanityTree *mTree = NULL;
-  std::vector<Person *> mPrs;   //array of pointers to the persons
+    HumanityTree() {
+    }
+    ;
+    static HumanityTree *mHumTree;
+    std::vector<Person *> mPrs;   //array of pointers to the persons
 };
 
 } /* namespace fm_tree */
