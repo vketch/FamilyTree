@@ -30,3 +30,9 @@ It will perform following:
 * build unit tests and run them
     
 For the second time the only building unit tests and run them will be performed    
+
+## Samples
+To build samples (under samples dir) run 
+```bash 
+make samples
+```
