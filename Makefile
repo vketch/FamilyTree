@@ -1,8 +1,6 @@
 SRC_DIR = src
 LIB_DIR = lib
 OBJ_DIR = obj
-BIN_DIR = bin
-TEST_DIR = test
 
 dir_guard=@mkdir -p $(@D)
 
@@ -29,17 +27,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(dir_guard)
 	g++ -std=c++11 -c -o $@ $^  
 
-$(BIN_DIR)/%: $(OBJ_DIR)/%.o 
-	$(dir_guard)
-	g++ -o $@ $< $(LIB) 
-
-clean:
+clean: clean_samples
 	rm -f ./$(OBJ_DIR)/*.o
-	rm -f ./$(LIB_DIR)/*.a	 
-	rm -f ./$(BIN_DIR)/*		
-
-
-#  !!!Unit tests part!!!  
+	rm -f ./$(LIB_DIR)/*.a	
+		 	
+#  !!!Unit test part!!!  
+TEST_DIR = test  
 TEST_SUFIX =_test
 TEST_MODULES = Person_test                            
 TEST_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(TEST_MODULES)))
@@ -65,4 +58,17 @@ $(OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp
  
 include googletests.mk
 
+#  !!!Sample part!!!
+.PHONY: samples clean_samples
+SAM_DIR = samples
+SAMPLES = $(SAM_DIR)/Person_sample \
+          $(SAM_DIR)/FamilyTree_sample
+          
+samples: $(SAMPLES)
 
+$(SAM_DIR)/%_sample: $(SAM_DIR)/%_sample.cpp $(LIB)   
+	$(dir_guard)
+	g++ -o $@ $< $(LIB) -I$(SRC_DIR) 
+
+clean_samples:
+	rm -f $(SAMPLES)	

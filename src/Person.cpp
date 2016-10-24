@@ -36,17 +36,15 @@ void Person::printInfo() const {
 
     if (!mSpouses.empty()) {
         std::cout << "	Spouses: ";
-        for (std::vector<Person*>::const_iterator it = mSpouses.begin();
-                it < mSpouses.end(); ++it)
-            std::cout << (*it)->mFname << ',';
+        for(Person* spouse : mSpouses)
+            std::cout << spouse->mFname << ',';
         std::cout << std::endl;
     }
 
     if (!mKids.empty()) {
         std::cout << "	Kids: ";
-        for (std::vector<Person*>::const_iterator it = mKids.begin();
-                it < mKids.end(); ++it)
-            std::cout << (*it)->mFname << ',';
+          for(Person* kid : mKids)
+              std::cout << kid->mFname << ',';
         std::cout << std::endl;
     }
 }

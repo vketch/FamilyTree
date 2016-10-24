@@ -34,45 +34,22 @@ public:
         Person::mPrsCnt++;
     }
 
-    virtual ~Person() {
-    }
+    virtual ~Person() {}
     ;
 
-    const std::string& getFname() const {
-        return mFname;
-    }
-
-    const std::string& getSname() const {
-        return mSname;
-    }
-
-    const Person* getFather() const {
-        return mFather;
-    }
-    const Person* getMather() const {
-        return mMather;
-    }
-
-    Sex getSex() const {
-        return mSex;
-    }
+    const std::string& getFname() const { return mFname; }
+    const std::string& getSname() const { return mSname; }
+    const Person* getFather() const { return mFather; }
+    const Person* getMather() const { return mMather; }
+    Sex getSex() const { return mSex; }
     std::string getStrSex() const;
-
-    const std::vector<Person*>& getKids() const {
-        return mKids;
-    }
-
-    const std::vector<Person*>& getSpouses() const {
-        return mSpouses;
-    }
+    const std::vector<Person*>& getKids() const { return mKids; }
+    const std::vector<Person*>& getSpouses() const { return mSpouses; }
+    unsigned long getID() const { return mID;   }
 
     void addSpouse(Person* person) {
         mSpouses.push_back(person);
         person->mSpouses.push_back(this);
-    }
-
-    unsigned long getID() const {
-        return mID;
     }
 
     void printInfo() const;
