@@ -18,12 +18,9 @@ public:
     };
 
     Person(std::string fname, std::string sname = "", Person* father = NULL,
-            Person* mather = NULL, Person::Sex sex = Person::UNKNOWN) {
-        mFname = fname;
-        mSname = sname;
-        mSex = sex;
-        mFather = father;
-        mMather = mather;
+            Person* mather = NULL, Person::Sex sex = Person::UNKNOWN):
+        mFname(fname), mSname(sname), mFather(father), mMather(mather), mSex(sex){
+
         if (mFather != NULL)
             mFather->mKids.push_back(this);
 

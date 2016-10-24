@@ -1,6 +1,8 @@
 SRC_DIR = src
 LIB_DIR = lib
 OBJ_DIR = obj
+TEST_DIR = test
+SAM_DIR = samples
 
 dir_guard=@mkdir -p $(@D)
 
@@ -32,7 +34,6 @@ clean: clean_samples
 	rm -f ./$(LIB_DIR)/*.a	
 		 	
 #  !!!Unit test part!!!  
-TEST_DIR = test  
 TEST_SUFIX =_test
 TEST_MODULES = Person_test                            
 TEST_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(TEST_MODULES)))
@@ -60,7 +61,6 @@ include googletests.mk
 
 #  !!!Sample part!!!
 .PHONY: samples clean_samples
-SAM_DIR = samples
 SAMPLES = $(SAM_DIR)/Person_sample \
           $(SAM_DIR)/FamilyTree_sample
           
