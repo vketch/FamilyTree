@@ -28,10 +28,9 @@ void FamilyTree::AddPrs(Person *person) {
 Person* FamilyTree::getPrsById(unsigned long id) const {
 
     if (!mPrs.empty()) {
-        for (std::vector<Person*>::const_iterator it = mPrs.begin();
-                it < mPrs.end(); ++it)
-            if ((*it)->getID() == id)
-                return (*it);
+        for ( Person* person : mPrs)
+            if (person->getID() == id)
+                return person;
         return NULL;
     } else
         return NULL;
