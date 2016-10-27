@@ -21,6 +21,7 @@
 
 # Executables
 *.exe<F2>
+*.exe
 *.out
 *.app
 
