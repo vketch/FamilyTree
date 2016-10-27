@@ -3,11 +3,9 @@ Solution for the organizing a family tree.
 The main  goal is to provide a possibility to build a whole family tree of the Bible persons.
 
 ## Building
-To build  on 
-### Linux:
-   Requare: git(1.9.1), gcc(4.8.4), make(3.81) 
-### Windows:
-   Requare: cygwin, git(2.10.1), gcc(5.4), make(4.1)
+To build under 
+Linux requares: git(1.9.1), gcc(4.8.4), make(3.81) 
+Windows requare: cygwin, git(2.10.1), gcc(5.4), make(4.1)
  
 Clone project
 
