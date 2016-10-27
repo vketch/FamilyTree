@@ -20,10 +20,12 @@
 *.lib
 
 # Executables
-*.exe<F2>
 *.exe
 *.out
 *.app
+samples/FamilyTree_sample
+samples/Person_sample
+test/family_tree_test
 
 # Temporary VIM 
 *.swp
