@@ -54,7 +54,7 @@ TEST_F(TestPerson, TestChildrenAndParents) {
     Person *Avel = new Person("KainFirstName", "KainSecondName", Adam, Eva,
             Person::MALE);
 
-    EXPECT_EQ(Adam->getKids().size(), 2);
+    EXPECT_EQ(Adam->getKids().size(), 2u);
     EXPECT_EQ(Adam->getKids(), Eva->getKids());
     EXPECT_EQ(Adam->getKids().back(), Avel);
     EXPECT_EQ(Eva->getKids()[0], Kain);

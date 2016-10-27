@@ -13,12 +13,12 @@
 namespace family_tree {
 class TestFamilyTree: public testing::Test {
 public:
-    static const int personQuanity=10;
+    static const unsigned int personQuanity=10;
 protected:
     Person *persons[personQuanity];
     FamilyTree famTree;
     void SetUp() {
-        for( int i=0; i<personQuanity; i++){
+        for( unsigned int i=0; i<personQuanity; i++){
             persons[i] =  new Person("Person_"+std::to_string(i) );
             famTree.AddPrs( persons[i]);
         }
@@ -29,7 +29,7 @@ protected:
     }
 };
 
-const int TestFamilyTree::personQuanity;
+const unsigned int TestFamilyTree::personQuanity;
 
 TEST_F(TestFamilyTree, TestPersonsQuanityInFamily) {
     EXPECT_EQ(famTree.getSize(), TestFamilyTree::personQuanity);
@@ -44,7 +44,7 @@ TEST_F(TestFamilyTree, TestIteratorOperators) {
 }
 
 TEST_F(TestFamilyTree, TestIteratorsInLoop) {
-    int count=0;
+    unsigned int count=0;
     for( auto it= famTree.begin(); it != famTree.end(); it++, count++);
     EXPECT_EQ( count, TestFamilyTree::personQuanity);
 }

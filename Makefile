@@ -9,7 +9,7 @@ dir_guard=@mkdir -p $(@D)
 LIB_NAME = family_tree
 LIB = $(LIB_DIR)/$(LIB_NAME).a
  
-CPPFLAGS = -std=c++11
+CPPFLAGS = -std=gnu++11
 
 LIB_MODULES = Person \
           FamilyTree \
@@ -41,7 +41,7 @@ TEST_MODULES = Person_test FamilyTree_test
 TEST_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(TEST_MODULES)))
 UNIT_TESTS = $(addprefix $(TEST_DIR)/, $(addsuffix $(TEST_SUFIX), $(LIB_NAME)))
 # Flags passed to the C++ compiler to compile gtests
-CXXFLAGS += -g -Wall -Wextra -pthread -std=c++11
+CXXFLAGS += -g -Wall -Wextra -pthread -std=gnu++11
 
 .PHONY: tests utest_build_print
 
