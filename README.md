@@ -5,7 +5,7 @@ The main  goal is to provide a possibility to build a whole family tree of the B
 ## Building
 To build under: 
 * Linux requares: git(1.9.1), gcc(4.8.4), make(3.81) 
-* Windows requare: cygwin, git(2.10.1), gcc(5.4), make(4.1)
+* Windows requares: cygwin, git(2.10.1), gcc(5.4), make(4.1)
  
 Clone project
 
