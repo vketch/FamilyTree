@@ -55,6 +55,12 @@ TEST_F(TestFamilyTree, TestGetPersonByIdPositive) {
     EXPECT_EQ( famTree.getPrsById(id)->getFname(), "Person_0" );
 }
 
+TEST_F(TestFamilyTree, TestC11RangeLoop) {
+    int i=0;
+    for( Person *person :famTree)
+        EXPECT_EQ(person->getFname(), ("Person_"+std::to_string(i++)) );
+}
+
 }/* namespace family_tree */
 
 
