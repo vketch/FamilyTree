@@ -30,7 +30,6 @@ public:
 
     virtual ~Person() {};
 
-
     std::string getStrSex() const;
 
     const std::vector<Person*>& getKids() const { return mKids; }

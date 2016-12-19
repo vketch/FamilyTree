@@ -10,6 +10,7 @@
 #include "FamilyTree.h"
 
 namespace family_tree {
+//unsigned long Person::mPrsCnt = 0;
 
 FamilyTree::FamilyTree() {
     // TODO Auto-generated constructor stub
@@ -23,6 +24,8 @@ FamilyTree::~FamilyTree() {
 void FamilyTree::AddPrs(Person *person) {
     if (person != NULL)
         mPrs.push_back(person);
+//   mID = Person::mPrsCnt;
+//   Person::mPrsCnt++;
 }
 
 Person* FamilyTree::getPrsById(unsigned long id) const {
