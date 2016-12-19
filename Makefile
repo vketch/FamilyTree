@@ -29,7 +29,7 @@ $(LIB): $(LIB_OBJECTS)
 	  		
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(SRC_DIR)/%.h
 	$(dir_guard)
-	g++ $(CPPFLAGS) -c -o $@ $^  
+	g++ $(CPPFLAGS) -c -o $@ $<  
 
 clean: clean_samples
 	rm -f ./$(OBJ_DIR)/*.o
