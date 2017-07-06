@@ -58,9 +58,10 @@ TEST(Person, TestConstructorExceptionWithNoFname) {
 }
 
 TEST_F(TestPerson, TestSpouses) {
-    Adam->addSpouse(Eva);
+	EXPECT_EQ(Adam->addSpouse(Eva), true);
     EXPECT_EQ(Adam->getSpouses().back(), Eva);
     EXPECT_EQ(Eva->getSpouses().back(), Adam);
+    EXPECT_EQ(Adam->addSpouse(Eva), false);
 }
 
 TEST_F(TestPerson, TestChildrenAndParents) {

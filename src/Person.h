@@ -39,10 +39,11 @@ public:
 
     unsigned long getID() const { return mID;   }
 
-    void addSpouse(Person* person) {
-        mSpouses.push_back(person);
-        person->mSpouses.push_back(this);
-    }
+    /*  This function add  spouse partner
+     *  return true if it has been added successfully
+     *  or false if not (for example these persons are spouse partners already
+    */
+    bool addSpouse(Person* person);
 
     void printInfo() const;
 

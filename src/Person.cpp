@@ -61,5 +61,14 @@ void Person::printInfo() const {
     }
 }
 
+bool Person::addSpouse(Person* person) {
+	for(Person* spouse: mSpouses)
+		if( spouse == person )
+			return false;
+	mSpouses.push_back(person);
+    person->mSpouses.push_back(this);
+	return true;
+}
+
 } /* namespace fm_tree */
 
