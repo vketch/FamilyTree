@@ -70,5 +70,20 @@ bool Person::addSpouse(Person* person) {
 	return true;
 }
 
+bool Person::addKid(Person* person) {
+	for(Person* kid: mKids)
+		if( kid == person )
+			return false;
+	mKids.push_back(person);
+
+	// make this one of parent(father or mather) for the person
+	if( mSex == PersonSex::MALE )
+		person->mFather = this;
+	else if( mSex == PersonSex::FEMALE )
+		person->mMather = this;
+
+	return true;
+}
+
 } /* namespace fm_tree */
 

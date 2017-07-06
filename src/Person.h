@@ -44,6 +44,12 @@ public:
     */
     bool addSpouse(Person* person);
 
+    /*  This function add person as kid.
+     *  return true if person has been added successfully
+     *  or false if not (for example this person is kid  already
+    */
+    bool addKid(Person* kid);
+
     void printInfo() const;
 
 	Person* getFather() const {
