@@ -27,9 +27,9 @@ $(LIB): $(LIB_OBJECTS)
 	$(dir_guard)
 	ar rcs $@ $^
 	  		
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(SRC_DIR)/%.h
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(dir_guard)
-	g++ $(CPPFLAGS) -c -o $@ $<  
+	g++ $(CPPFLAGS) -c -o $@ $^  
 
 clean: clean_samples
 	rm -f ./$(OBJ_DIR)/*.o
@@ -49,7 +49,7 @@ tests:  gtests utest_build_print $(UNIT_TESTS)
 	@echo -----------Run Unit Tests-------------
 	$(UNIT_TESTS)
 	
-$(UNIT_TESTS): $(LIB) $(TEST_OBJECTS) 
+$(UNIT_TESTS): $(LIB_OBJECTS) $(TEST_OBJECTS) 
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(GTEST_LIB) 
 
 utest_build_print:
