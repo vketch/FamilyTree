@@ -39,7 +39,22 @@ TEST_F(TestPerson, TestConstructorWithAllParameters) {
     EXPECT_EQ(Adam->getFname(), "AdamFirstName");
     EXPECT_EQ(Adam->getSname(), "AdamSecondName");
     EXPECT_EQ(Adam->getSex(), Person::MALE);
+    EXPECT_EQ(Eva->getSex(), Person::FEMALE);
     EXPECT_EQ(Adam->getStrSex(), "MALE");
+}
+
+TEST(Person, TestConstructorExceptionWithNoFname) {
+	bool throwPersonException = false;
+	try{
+		Person* SomeBody = new Person("");
+	}
+	catch (PersonException&){
+		throwPersonException = true;
+	}
+	catch (...){
+		throwPersonException = false;
+	}
+	EXPECT_EQ(throwPersonException, true);
 }
 
 TEST_F(TestPerson, TestSpouses) {

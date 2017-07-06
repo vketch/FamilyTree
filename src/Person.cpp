@@ -5,7 +5,19 @@
 
 namespace family_tree {
 
-unsigned long Person::mPrsCnt = 0;
+Person::Person(std::string fname, std::string sname, Person* father,
+        Person* mather, Person::PersonSex sex):
+	mFname(fname), mSname(sname), mFather(father), mMather(mather), mSex(sex){
+
+    if( fname.size()==0 )
+    	throw PersonException("Person should has first name at least");
+
+    if (mFather != NULL)
+        mFather->mKids.push_back(this);
+
+    if (mMather != NULL)
+        mMather->mKids.push_back(this);
+}
 
 std::string Person::getStrSex() const {
     switch (mSex) {
