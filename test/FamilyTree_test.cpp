@@ -15,17 +15,17 @@ class TestFamilyTree: public testing::Test {
 public:
     static const unsigned int personQuanity=10;
 protected:
-    Person *persons[personQuanity];
+    shPerson persons[personQuanity];
     FamilyTree famTree;
     void SetUp() {
         for( unsigned int i=0; i<personQuanity; i++){
-            persons[i] =  new Person("Person_"+std::to_string(i) );
+            persons[i] =  shPerson( new Person("Person_"+std::to_string(i) ) );
             famTree.AddPrs( persons[i]);
         }
     }
     void TearDown() {
-        for(Person *person :persons )
-            delete person;
+        for(shPerson person :persons )
+            person = nullptr;
     }
 };
 
@@ -50,14 +50,14 @@ TEST_F(TestFamilyTree, TestIteratorsInLoop) {
 }
 
 TEST_F(TestFamilyTree, TestGetPersonByIdPositive) {
-    Person *per  = *famTree.begin();
+    shPerson per  = *famTree.begin();
     unsigned long id = per->getID();
     EXPECT_EQ( famTree.getPrsById(id)->getFname(), "Person_0" );
 }
 
 TEST_F(TestFamilyTree, TestC11RangeLoop) {
     int i=0;
-    for( Person *person :famTree)
+    for( shPerson person :famTree)
         EXPECT_EQ(person->getFname(), ("Person_"+std::to_string(i++)) );
 }
 

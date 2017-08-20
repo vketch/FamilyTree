@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 #ifndef SRC_PERSON_H_
 #define SRC_PERSON_H_
@@ -15,6 +16,7 @@ struct PersonException{
 };
 
 class Person;
+using shPerson=std::shared_ptr<Person>;
 
 class Person {
 public:
@@ -22,7 +24,7 @@ public:
         UNKNOWN = 1, MALE, FEMALE
     };
 
-    Person(std::string fname, std::string sname="", Person* father=NULL, Person* mather=NULL,
+    Person(std::string fname, std::string sname="", shPerson father=nullptr, shPerson mather=nullptr,
     		Person::PersonSex sex=UNKNOWN);
 
     Person(Person& person) = delete;
@@ -32,9 +34,9 @@ public:
 
     std::string getStrSex() const;
 
-    const std::vector<Person*>& getKids() const { return mKids; }
+    const std::vector<shPerson>& getKids() const { return mKids; }
 
-    const std::vector<Person*>& getSpouses() const { return mSpouses; }
+    const std::vector<shPerson>& getSpouses() const { return mSpouses; }
 
     unsigned long getID() const { return mID;   }
 
@@ -42,17 +44,17 @@ public:
      *  return true if it has been added successfully
      *  or false if not (for example these persons are spouse partners already
     */
-    bool addSpouse(Person* person);
+    bool addSpouse(shPerson person);
 
     /*  This function add person as kid.
      *  return true if person has been added successfully
      *  or false if not (for example this person is kid  already
     */
-    bool addKid(Person* kid);
+    bool addKid(shPerson kid);
 
     void printInfo() const;
 
-	Person* getFather() const {
+    shPerson getFather() const {
 		return mFather;
 	}
 
@@ -68,7 +70,7 @@ public:
 		mID = id;
 	}
 
-	Person* getMather() const {
+	shPerson getMather() const {
 		return mMather;
 	}
 
@@ -92,11 +94,11 @@ private:
     unsigned long mID = 0; // Person Counter
     std::string mFname;        //first name
     std::string mSname = "";   // second name
-    Person *mFather = NULL;   // Person's father
-    Person *mMather = NULL;  // Person's mather
+    shPerson mFather = nullptr;   // Person's father
+    shPerson mMather = nullptr;  // Person's mather
     PersonSex mSex = Person::UNKNOWN; // Person sex
-    std::vector<Person*> mKids;    // Person's kids
-    std::vector<Person*> mSpouses; // // Person's spouses
+    std::vector<shPerson> mKids;    // Person's kids
+    std::vector<shPerson> mSpouses; // // Person's spouses
 
 };
 

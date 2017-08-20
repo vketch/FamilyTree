@@ -21,17 +21,17 @@ FamilyTree::~FamilyTree() {
     mPrs.clear();
 }
 
-void FamilyTree::AddPrs(Person *person) {
+void FamilyTree::AddPrs(shPerson person) {
     if (person != NULL)
         mPrs.push_back(person);
 //   mID = Person::mPrsCnt;
 //   Person::mPrsCnt++;
 }
 
-Person* FamilyTree::getPrsById(unsigned long id) const {
+shPerson FamilyTree::getPrsById(unsigned long id) const {
 
     if (!mPrs.empty()) {
-        for ( Person* person : mPrs)
+        for ( shPerson person : mPrs)
             if (person->getID() == id)
                 return person;
         return NULL;
