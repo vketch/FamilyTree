@@ -13,21 +13,19 @@ using namespace std;
 using namespace family_tree;
 
 int main() {
-  Person *persons[100];
+  const int count = 10;
+  Person *persons[count];
   FamilyTree famTree;
 
-  for( int i=0; i<100; i++){
+  for( int i=0; i<count; i++){
       persons[i] =  new Person("Person_"+std::to_string(i));
       famTree.AddPrs( persons[i]);
   }
 
-  Person *per10 =  famTree.getPrsById(10);
-  per10->printInfo();
-
   for(Person *person :persons ){
+	  person->printInfo();
       delete person;
   }
-
 
   return 0;
 }
