@@ -12,30 +12,30 @@ namespace family_tree {
 
 class TestPerson: public testing::Test {
 protected:
-    shPerson Adam;
-    shPerson Eva;
+    Person *Adam;
+    Person *Eva;
     void SetUp() {
-        Adam = shPerson(new Person("AdamFirstName", "AdamSecondName", nullptr, nullptr,
-                Person::MALE));
-        Eva = shPerson(new Person("EvaFirstName", "EvaSecondName", nullptr, nullptr,
-                Person::FEMALE));
+        Adam = new Person("AdamFirstName", "AdamSecondName", NULL, NULL,
+                Person::MALE);
+        Eva = new Person("EvaFirstName", "EvaSecondName", NULL, NULL,
+                Person::FEMALE);
     }
     void TearDown() {
-        Adam = nullptr;
-        Eva = nullptr;
+        delete Adam;
+        delete Eva;
     }
 };
 
 TEST(Person, TestConstructorWithDefaultParameters) {
-    shPerson  SomeBody = shPerson( new Person("SomeBody") );
-    ASSERT_TRUE(SomeBody != nullptr);
+    Person * SomeBody = new Person("SomeBody");
+    ASSERT_TRUE(SomeBody != NULL);
     EXPECT_EQ(SomeBody->getFname(), "SomeBody");
     EXPECT_EQ(SomeBody->getSname(), "");
     EXPECT_EQ(SomeBody->getSex(), Person::UNKNOWN);
 }
 
 TEST_F(TestPerson, TestConstructorWithAllParameters) {
-    ASSERT_TRUE(Adam != nullptr);
+    ASSERT_TRUE(Adam != NULL);
     EXPECT_EQ(Adam->getFname(), "AdamFirstName");
     EXPECT_EQ(Adam->getSname(), "AdamSecondName");
     EXPECT_EQ(Adam->getSex(), Person::MALE);
@@ -46,7 +46,7 @@ TEST_F(TestPerson, TestConstructorWithAllParameters) {
 TEST(Person, TestConstructorExceptionWithNoFname) {
 	bool throwPersonException = false;
 	try{
-		shPerson SomeBody = shPerson(new Person(""));
+		Person* SomeBody = new Person("");
 	}
 	catch (PersonException&){
 		throwPersonException = true;
@@ -58,10 +58,10 @@ TEST(Person, TestConstructorExceptionWithNoFname) {
 }
 
 TEST_F(TestPerson, TestChildrenAndParents) {
-    shPerson Kain = shPerson( new Person("KainFirstName", "KainSecondName", Adam, Eva,
-            Person::MALE) );
-    shPerson Avel = shPerson( new Person("KainFirstName", "KainSecondName", Adam, Eva,
-            Person::MALE) );
+    Person *Kain = new Person("KainFirstName", "KainSecondName", Adam, Eva,
+            Person::MALE);
+    Person *Avel = new Person("KainFirstName", "KainSecondName", Adam, Eva,
+            Person::MALE);
 
     EXPECT_EQ(Adam->getKids().size(), 2u);
     EXPECT_EQ(Adam->getKids(), Eva->getKids());
@@ -80,7 +80,7 @@ TEST_F(TestPerson, TestAddSpouses) {
 }
 
 TEST_F(TestPerson, TestAddKid) {
-    shPerson Kain = shPerson(new Person("KainFirstName", "KainSecondName"));
+    Person *Kain = new Person("KainFirstName", "KainSecondName");
     EXPECT_EQ(Adam->addKid(Kain), true);
     EXPECT_EQ(Adam->addKid(Kain), false);
 	EXPECT_EQ(Adam->getKids().size(), 1u);
