@@ -21,9 +21,8 @@ FamilyTree::~FamilyTree() {
     mPrs.clear();
 }
 
-void FamilyTree::AddPrs(Person *person) {
-    if (person != NULL)
-        mPrs.push_back(person);
+void FamilyTree::AddPrs(Person& person) {
+     mPrs.push_back(&person);
 //   mID = Person::mPrsCnt;
 //   Person::mPrsCnt++;
 }

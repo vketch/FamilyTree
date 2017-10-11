@@ -20,7 +20,7 @@ protected:
     void SetUp() {
         for( unsigned int i=0; i<personQuanity; i++){
             persons[i] =  new Person("Person_"+std::to_string(i) );
-            famTree.AddPrs( persons[i]);
+            famTree.AddPrs( *persons[i]);
         }
     }
     void TearDown() {
