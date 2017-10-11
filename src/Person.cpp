@@ -70,17 +70,19 @@ bool Person::addSpouse(Person* person) {
 	return true;
 }
 
-bool Person::addKid(Person* person) {
-	for(Person* kid: mKids)
-		if( kid == person )
+bool Person::addKid(Person& person) {
+	for(Person* kid: mKids){
+	    //ToDo kid should has different name else this person is  added as Kid
+		if( kid == &person )
 			return false;
-	mKids.push_back(person);
+	}
+	mKids.push_back(&person);
 
 	// make this one of parent(father or mather) for the person
 	if( mSex == PersonSex::MALE )
-		person->mFather = this;
+		person.mFather = this;
 	else if( mSex == PersonSex::FEMALE )
-		person->mMather = this;
+		person.mMather = this;
 
 	return true;
 }

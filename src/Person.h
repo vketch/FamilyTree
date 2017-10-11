@@ -48,7 +48,7 @@ public:
      *  return true if person has been added successfully
      *  or false if not (for example this person is kid  already
     */
-    bool addKid(Person* kid);
+    bool addKid(Person& kid);
 
     void printInfo() const;
 
@@ -97,7 +97,6 @@ private:
     PersonSex mSex = Person::UNKNOWN; // Person sex
     std::vector<Person*> mKids;    // Person's kids
     std::vector<Person*> mSpouses; // // Person's spouses
-
 };
 
 } /* namespace fm_tree */

@@ -80,12 +80,12 @@ TEST_F(TestPerson, TestAddSpouses) {
 }
 
 TEST_F(TestPerson, TestAddKid) {
-    Person *Kain = new Person("KainFirstName", "KainSecondName");
+    Person Kain("KainFirstName", "KainSecondName");
     EXPECT_EQ(Adam->addKid(Kain), true);
     EXPECT_EQ(Adam->addKid(Kain), false);
 	EXPECT_EQ(Adam->getKids().size(), 1u);
-	EXPECT_EQ(Adam->getKids()[0]->getFname(), Kain->getFname());
-    EXPECT_EQ(Kain->getFather()->getFname(), Adam->getFname());
+	EXPECT_EQ(Adam->getKids()[0]->getFname(), Kain.getFname());
+    EXPECT_EQ(Kain.getFather()->getFname(), Adam->getFname());
 }
 
 }/* namespace family_tree */

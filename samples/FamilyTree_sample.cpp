@@ -19,7 +19,7 @@ int main() {
 
   for( int i=0; i<count; i++){
       persons[i] =  new Person("Person_"+std::to_string(i));
-      famTree.AddPrs( persons[i]);
+      famTree.addPrs( *persons[i]);
   }
 
   for(Person *person :persons ){

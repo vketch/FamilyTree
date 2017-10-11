@@ -22,7 +22,7 @@ public:
     virtual ~FamilyTree();
 
     /*Add Person to family tree*/
-    void AddPrs(Person& person);
+    void addPrs(Person& person);
 
     /*Get person Persons quantity in Family tree*/
     unsigned long getSize() const{ return mPrs.size(); }
