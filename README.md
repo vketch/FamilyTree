@@ -1,7 +1,7 @@
 # FamilyTree
 Solution for the organizing a family tree.
 The main goal is to provide a possibility to build family ties of the Bible persons, include dates, roles, places.
-That allows simplify the researching of Bible.        
+That allows to simplify the researching of Bible.        
 
 ## Building
 To build under: 
