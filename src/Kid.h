@@ -8,11 +8,11 @@
 #ifndef KID_H_
 #define KID_H_
 
-#include "Person.h"
+#include "HumanPerson.h"
 
 namespace family_tree {
 
-class Kid: public Person {
+class Kid: public HumanPerson {
 public:
     Kid();
     virtual ~Kid();

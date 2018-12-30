@@ -14,15 +14,15 @@ using namespace family_tree;
 
 int main() {
   const int count = 10;
-  Person *persons[count];
+  HumanPerson *persons[count];
   FamilyTree famTree;
 
   for( int i=0; i<count; i++){
-      persons[i] =  new Person("Person_"+std::to_string(i));
+      persons[i] =  new HumanPerson("Person_"+std::to_string(i));
       famTree.addPrs( *persons[i]);
   }
 
-  for(Person *person :persons ){
+  for(HumanPerson *person :persons ){
 	  person->printInfo();
       delete person;
   }

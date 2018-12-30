@@ -21,16 +21,16 @@ FamilyTree::~FamilyTree() {
     mPrs.clear();
 }
 
-void FamilyTree::addPrs(Person& person) {
+void FamilyTree::addPrs(HumanPerson& person) {
      mPrs.push_back(&person);
 //   mID = Person::mPrsCnt;
 //   Person::mPrsCnt++;
 }
 
-Person* FamilyTree::getPrsById(unsigned long id) const {
+HumanPerson* FamilyTree::getPrsById(unsigned long id) const {
 
     if (!mPrs.empty()) {
-        for ( Person* person : mPrs)
+        for ( HumanPerson* person : mPrs)
             if (person->getID() == id)
                 return person;
         return NULL;

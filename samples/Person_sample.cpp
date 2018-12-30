@@ -1,30 +1,30 @@
+#include <HumanPerson.h>
 #include <iostream>
-#include "Person.h"
 
 using namespace std;
 using namespace family_tree;
 
 int main() {
-  vector<Person *> BblPrs;   // Bible Persons
+  vector<HumanPerson *> BblPrs;   // Bible Persons
 
-  Person *Adam = new Person("Adam", "", NULL, NULL, Person::MALE);
+  HumanPerson *Adam = new HumanPerson("Adam", "", NULL, NULL, HumanPerson::MALE);
   BblPrs.push_back(Adam);
   Adam->printInfo();
 
-  Person *Eva = new Person("Eva", "", NULL, NULL, Person::FEMALE);
+  HumanPerson *Eva = new HumanPerson("Eva", "", NULL, NULL, HumanPerson::FEMALE);
   Adam->addSpouse(Eva);
   Eva->printInfo();
 
-  Person Kain("Kain", "", Adam, Eva, Person::MALE);
-  Person Avel("Avel", "", Adam, Eva, Person::MALE);
-  Person Sum("Sum", "", Adam, Eva, Person::MALE);
+  HumanPerson Kain("Kain", "", Adam, Eva, HumanPerson::MALE);
+  HumanPerson Avel("Avel", "", Adam, Eva, HumanPerson::MALE);
+  HumanPerson Sum("Sum", "", Adam, Eva, HumanPerson::MALE);
 
   Adam->printInfo();
 
-  Person Enoh("Enoh", "", &Kain, NULL, Person::MALE);
+  HumanPerson Enoh("Enoh", "", &Kain, NULL, HumanPerson::MALE);
 
-  Person Irad("Irad", "", &Enoh, NULL, Person::MALE);
-  Person Igujal("Igujal", "", &Irad, NULL, Person::MALE);
+  HumanPerson Irad("Irad", "", &Enoh, NULL, HumanPerson::MALE);
+  HumanPerson Igujal("Igujal", "", &Irad, NULL, HumanPerson::MALE);
 
   Kain.printInfo();
   Enoh.printInfo();

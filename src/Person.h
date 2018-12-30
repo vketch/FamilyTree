@@ -1,104 +1,53 @@
-//Class Person represents a person
-//and keeps family relation ships with the other persons
-
-#include <string>
-#include <vector>
+/*
+ * Person.h
+ *
+ *  Created on: 30 груд. 2018 р.
+ *      Author: root
+ */
 
 #ifndef SRC_PERSON_H_
 #define SRC_PERSON_H_
 
-namespace family_tree {
+#include <string>
 
 struct PersonException{
-	std::string mErrorMsg="";
-	PersonException(std::string errorMsg):mErrorMsg(errorMsg){;}
+    std::string mErrorMsg="";
+    PersonException(std::string errorMsg):mErrorMsg(errorMsg){;}
 };
 
-class Person;
+namespace family_tree {
 
 class Person {
 public:
-    enum PersonSex {
-        UNKNOWN = 1, MALE, FEMALE
+    enum PersonType {
+        GOD = 1, ANGEL, HUMAN
     };
-
-    Person(std::string fname, std::string sname="", Person* father=NULL, Person* mather=NULL,
-    		Person::PersonSex sex=UNKNOWN);
-
-    Person(Person& person) = delete;
-    Person& operator=(Person& person) = delete;
+    Person(std::string fname, PersonType type);
 
     virtual ~Person() {};
 
-    std::string getStrSex() const;
+    const std::string& getFname() const {
+        return mFname;
+    }
 
-    const std::vector<Person*>& getKids() const { return mKids; }
+    const PersonType& getType() const {
+        return mType;
+    }
 
-    const std::vector<Person*>& getSpouses() const { return mSpouses; }
+    unsigned long getID() const {
+        return mID;
+    }
 
-    unsigned long getID() const { return mID;   }
-
-    /*  This function add  spouse partner
-     *  return true if it has been added successfully
-     *  or false if not (for example these persons are spouse partners already
-    */
-    bool addSpouse(Person* person);
-
-    /*  This function add person as kid.
-     *  return true if person has been added successfully
-     *  or false if not (for example this person is kid  already
-    */
-    bool addKid(Person& kid);
-
-    void printInfo() const;
-
-	Person* getFather() const {
-		return mFather;
-	}
-
-	const std::string& getFname() const {
-		return mFname;
-	}
-
-	unsigned long getId() const {
-		return mID;
-	}
-
-	void setId(unsigned long id = 0) {
-		mID = id;
-	}
-
-	Person* getMather() const {
-		return mMather;
-	}
-
-	PersonSex getSex() const {
-		return mSex;
-	}
-
-	void setSex(PersonSex sex = Person::UNKNOWN) {
-		mSex = sex;
-	}
-
-	const std::string& getSname() const {
-		return mSname;
-	}
-
-	void setSname(const std::string& sname = "") {
-		mSname = sname;
-	}
+    void setId(unsigned long id = 0) {
+        mID = id;
+    }
 
 private:
-    unsigned long mID = 0; // Person Counter
-    std::string mFname;        //first name
-    std::string mSname = "";   // second name
-    Person *mFather = NULL;   // Person's father
-    Person *mMather = NULL;  // Person's mather
-    PersonSex mSex = Person::UNKNOWN; // Person sex
-    std::vector<Person*> mKids;    // Person's kids
-    std::vector<Person*> mSpouses; // // Person's spouses
+    unsigned long mID = 0; // Person ID
+    PersonType mType;      // Person type
+    std::string mFname;     //first name
 };
 
-} /* namespace fm_tree */
+} /* namespace family_tree */
 
 #endif /* SRC_PERSON_H_ */

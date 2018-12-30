@@ -8,7 +8,7 @@
 #ifndef SRC_HUMANITYTREE_H_
 #define SRC_HUMANITYTREE_H_
 
-#include "Person.h"
+#include "HumanPerson.h"
 
 namespace family_tree {
 
@@ -24,14 +24,14 @@ public:
     }
 
     /*Add Person to Humanity tree*/
-    void AddPrs(Person& person) {
+    void AddPrs(HumanPerson& person) {
         mPrs.push_back(&person);
     }
 
     /*Returns pointer to Person by the Person id*/
-    Person* getPrsById(unsigned long id) const {
+    HumanPerson* getPrsById(unsigned long id) const {
         if (!mPrs.empty()) {
-            for (Person *person : mPrs)
+            for (HumanPerson *person : mPrs)
                 if (person->getID() == id)
                     return person;
             return NULL;
@@ -44,7 +44,7 @@ private:
     }
     ;
     static HumanityTree *mHumTree;
-    std::vector<Person *> mPrs;   //array of pointers to the persons
+    std::vector<HumanPerson *> mPrs;   //array of pointers to the persons
 };
 
 } /* namespace fm_tree */

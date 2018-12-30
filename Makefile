@@ -12,6 +12,7 @@ LIB = $(LIB_DIR)/$(LIB_NAME).a
 CPPFLAGS = -std=gnu++11
 
 LIB_MODULES = Person \
+          HumanPerson \
           FamilyTree \
           HumanityTree
                      
@@ -37,7 +38,7 @@ clean: clean_samples
 		 	
 #  !!!Unit test part!!!  
 TEST_SUFIX =_test
-TEST_MODULES = Person_test FamilyTree_test
+TEST_MODULES = Person_test HumanPerson_test FamilyTree_test
 TEST_OBJECTS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(TEST_MODULES)))
 UNIT_TESTS = $(addprefix $(TEST_DIR)/, $(addsuffix $(TEST_SUFIX), $(LIB_NAME)))
 # Flags passed to the C++ compiler to compile gtests
